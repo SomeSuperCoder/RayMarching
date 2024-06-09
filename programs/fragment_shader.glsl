@@ -88,7 +88,7 @@ vec2 map(vec3 p) {
     vec2 wall = vec2(wallDist, wallID);
     // result
     vec2 res;
-//    res = wall;
+    res = wall;
     res = fOpUnionID(box, cylinder);
     res = fOpDifferenceColumnsID(wall, res, 0.6, 3.0);
     res = fOpUnionChamferID(res, roof, 0.6);
@@ -142,14 +142,14 @@ vec3 getMaterial(vec3 p, float id) {
 
     switch (int(id)) {
         case 1:
-        m = vec3(0.9, 0.0, 0.0); break;
+            m = vec3(0.9, 0.0, 0.0); break;
         case 2:
-        m = vec3(0.2 + 0.4 * mod(floor(p.x) + floor(p.z), 2.0)); break;
+            m = vec3(0.2 + 0.4 * mod(floor(p.x) + floor(p.z), 2.0)); break;
         case 3:
-        m = vec3(0.7, 0.8, 0.9); break;
+            m = vec3(0.7, 0.8, 0.9); break;
         case 4:
-        vec2 i = step(fract(0.5 * p.xz), vec2(1.0 / 10.0));
-        m = ((1.0 - i.x) * (1.0 - i.y)) * vec3(0.37, 0.12, 0.0); break;
+            vec2 i = step(fract(0.5 * p.xz), vec2(1.0 / 10.0));
+            m = ((1.0 - i.x) * (1.0 - i.y)) * vec3(0.37, 0.12, 0.0); break;
     }
 
     return m;
