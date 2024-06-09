@@ -25,5 +25,8 @@ class App(mglw.WindowConfig):
         self.set_uniform("u_time", time)
         self.quad.render(self.prog)
 
+    def mouse_position_event(self, x: int, y: int, dx: int, dy: int):
+        self.set_uniform("u_mouse", (x, y))
+
 if __name__ == "__main__":
     mglw.run_window_config(App)
